@@ -80,9 +80,12 @@ const carrinho = [
 </script>
 
 <template>
+
   <div class="template">
     <h1>COMPRAS DE CRIA</h1>
-    <img src="https://imageproxy.ifunny.co/noop/user_photos/dc16f94f0cd56c5a2656bcda7631002191193326_0.jpg" alt="">
+    <div>
+    <img src="https://imageproxy.ifunny.co/noop/user_photos/dc16f94f0cd56c5a2656bcda7631002191193326_0.jpg" alt="" width="50">
+  </div>
   </div>
 </template>
 
@@ -93,15 +96,20 @@ const carrinho = [
   border-radius: 15px;
   box-shadow: 10px 10px 10px 10px;
   border: 100px  wheat;
-  text-align: center;
+ 
+  
   
 }
 h1{
   color: brown;
+  padding-top: 100px;
+  text-align: center;
 }
 img{
-border-radius: 15px;
-
+border-radius: 15px 15px 15px 15px 15px;
+padding-right: 1200px;
+width: 100px;
+padding-bottom: 100px;
 }
 
 </style>
