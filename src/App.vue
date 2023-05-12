@@ -98,23 +98,58 @@ function menos(index) {
 </script>
 
 <template>
-  <div class="template">
-    <h1>COMPRAS DE CRIA</h1>
-
-    <div v-for="(produtos, id) in produtos" :key="id" class="col-3">
-      <b id="negrito"> {{ produtos.id }} - {{ produtos.nome }}</b>
-      <br>
-      <b id="negrito"> {{ produtos.preco }} R$</b>
-      <br>
-      <b id="negrito"> {{ produtos.quantidade }} </b>
-      <br><button type="button" @click="menos(id)" class="btn bg-danger p-2 h-r">-</button>
-      <button type="button" @click="mais(id)" class="btn bg-danger p-2 ml-b h-g">+</button>
-      <button type="button" @click="adicionarCarrinho(produto)" class="btn bg-danger p-2 ml-b h-g">Adicionar</button>
-
+<div class="titulo">
+   <h1>COMPRAS DE CRIA</h1>
     </div>
-    {{ carrinho }}
-    {{ valorTotal }}
+  <div class="template">
+
+
+    <div v-for="(produto, index) in produtos" :key="produto.id" class="col-3">
+
+      <div class="produtos">
+        <b id="negrito"> {{ produto.id }} - {{ produto.nome }}</b>
+      <br>
+      <b id="negrito"> {{ produto.preco }} R$</b>
+      <br>
+      <b id="negrito"> {{ produto.quantidade }} </b>
+      <br><button type="button" @click="menos(index)" class="btn bg-danger p-2 h-r">-</button>
+      <button type="button" @click="mais(index)" class="btn bg-danger p-2 ml-b h-g">+</button>
+      <button type="button" @click="adicionarCarrinho(produto)" class="btn bg-danger p-2 ml-b h-g">Adicionar</button>
+      </div>
+    </div>
   </div>
+
+
+      
+      <button type="button" class="btn btn-primary p-3 mt-2 " data-bs-toggle="modal" data-bs-target="#exampleModal">
+    Carrinho
+    </button>
+    <hr>
+   
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h1 class="modal-title fs-5" id="exampleModalLabel">Carrinho</h1>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <div v-for="(itemDoCarrinho, index) in carrinho.items" :key="itemDoCarrinho.id">
+            <strong> {{ itemDoCarrinho.id }} - {{ itemDoCarrinho.nome }}</strong>
+            <br>
+            <p>Preço R$ {{itemDoCarrinho.preco }} | Quant {{ itemDoCarrinho.quantidade}} (Total: {{ itemDoCarrinho.total }} )</p>
+
+          </div>
+          <p v-if="carrinho.length > 0">Valor total da compra: R$ {{ carrinho.total }}</p>
+          <p v-else>Nenhum item no carrinho</p>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fechar</button>
+            
+          </div>
+        </div>
+      </div>
+    </div>
 </template>
 
 
@@ -124,8 +159,11 @@ function menos(index) {
   border-radius: 15px;
   box-shadow: 10px 10px 10px 10px;
   border: 100px wheat;
-
-
+  display: flex  ;
+  flex-direction: row;
+  flex-wrap: wrap;
+  
+  
 
 }
 
@@ -143,5 +181,13 @@ h1 {
 .ml-b {
   margin-left: 7px;
 
+}
+.titulo{
+  background-color: black;
+  border-radius: 15px;
+  box-shadow: 10px 10px 10px 10px;
+  border: 100px wheat;
+  
+    
 }
 </style>
